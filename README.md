@@ -1,5 +1,14 @@
 # 🤖 B Invest - OpenClaw Agent Infrastructure
 
+## 🚀 What's Included
+
+This repository contains a **complete, optimized OpenClaw setup** with:
+- ✅ **QMD Memory** - Local-first quantum memory database
+- ✅ **Session Pruning** - Automatic context optimization
+- ✅ **Memory Flush** - Never lose important data
+- ✅ **Multi-channel** - Telegram + WhatsApp + WebChat
+- ✅ **Documentation** - Complete setup guides
+
 ## 📁 Repository Structure
 
 ```
@@ -13,25 +22,55 @@ clawdbot-kimi-agent/
 │   ├── logs/              # Daily session logs
 │   └── transcripts/       # Conversation transcripts
 ├── docs/                  # Documentation
-│   ├── setup/             # Setup guides
-│   ├── tips/              # Tips and tricks
-│   └── troubleshooting/   # Common issues
+│   ├── OPTIMIZATION.md    # Performance optimization guide
+│   ├── QMD-SETUP.md       # QMD installation & setup ⭐ NEW
+│   └── setup-guide.md     # General setup guide
 ├── scripts/               # Utility scripts
 │   ├── backup.sh          # Backup script
 │   └── cleanup.sh         # Cleanup old logs
 ├── config/                # Configuration examples
-│   ├── openclaw.json.example
-│   └── channels/          # Channel configs
+│   ├── openclaw-qmd.json          # Config WITH QMD ⭐
+│   ├── openclaw-optimized.json    # Config without QMD
+│   └── setup-guide.md             # Setup instructions
 └── README.md              # This file
 ```
 
-## 🧠 Memory Management
+## 🧠 Memory Systems
+
+### Option 1: QMD (Quantum Memory Database) ⭐ RECOMMENDED
+**Status:** ✅ Installed and configured
+**Features:**
+- 100% Local embeddings (no external API)
+- BM25 + Vector search combined
+- Advanced reranking
+- Full privacy
+- Better performance
+
+**Setup:** See `docs/QMD-SETUP.md`
+
+**Quick Start:**
+```bash
+cp config/openclaw-qmd.json ~/.openclaw/openclaw.json
+openclaw gateway restart
+```
+
+### Option 2: Default Memory
+**Features:**
+- Works immediately
+- Remote embeddings
+- Simpler setup
+
+**Quick Start:**
+```bash
+cp config/openclaw-optimized.json ~/.openclaw/openclaw.json
+openclaw gateway restart
+```
 
 ### Context Limit Strategy
 - **Max tokens:** 262k (Kimi K2.5)
 - **Warning at:** 200k tokens (80%)
 - **Critical at:** 240k tokens (90%)
-- **Action:** Summarize and archive when >200k
+- **Action:** Auto-flush memories when >238k
 
 ### Memory Files
 | File | Purpose | Update Frequency |
@@ -69,7 +108,27 @@ sessions/YYYY-MM-DD/
 - **SerpAPI:** 250 searches/month
 - **Kimi K2.5:** Primary model
 
-## 🚀 Quick Commands
+## ⚡ Optimizations Included
+
+### 1. Automatic Memory Flush
+Saves important memories BEFORE context compaction. Never lose data!
+
+### 2. Session Pruning (cache-ttl)
+- Removes old tool results after 5 min idle
+- Keeps only last 3 assistant messages
+- Faster responses, lower costs
+
+### 3. Smart Heartbeat
+- Checks every 30 minutes
+- Reads HEARTBEAT.md for tasks
+- Max idle: 2 hours
+
+### 4. QMD Integration
+- Local-first memory search
+- BM25 + Vector + Reranking
+- 100% privacy
+
+**Documentation:** See `docs/OPTIMIZATION.md`
 
 ```bash
 # Backup everything
