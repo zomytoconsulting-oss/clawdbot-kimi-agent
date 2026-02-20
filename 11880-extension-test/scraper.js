@@ -122,27 +122,36 @@
     console.log('🔍 Looking for next button...');
     
     // Try multiple selectors for "next" button
+    // German: "zur nächsten Seite" = to the next page
     const selectors = [
       'a[rel="next"]',
       '.pagination-next',
-      'a:contains("Weiter")',
-      'button:contains("Weiter")',
+      'a[title*="nächsten"]',  // German: next
+      'a:contains("nächsten")',
+      'button:contains("nächsten")',
       '.pagination a:last-child',
       '[class*="next"]',
-      '[class*="weiter"]'
+      '[class*="weiter"]',
+      'a[href*="page="]'  // Links with page parameter
     ];
     
     let nextBtn = null;
     
-    for (const selector of selectors) {
-      try {
-        if (selector.includes(':contains')) {
-          // jQuery-style selector not supported, skip
-          continue;
-        }
-        nextBtn = document.querySelector(selector);
-        if (nextBtn) break;
-      } catch (e) {}
+    // First try: look for link containing "nächsten" or "next"
+    const allLinks = document.querySelectorAll('a');
+    for (const link of allLinks) {
+      const text = link.textContent.toLowerCase();
+      const title = (link.getAttribute('title') || '').toLowerCase();
+      
+      if (text.includes('nächsten') || 
+          text.includes('next') || 
+          title.includes('nächsten') ||
+          text.includes('weiter') ||
+          link.getAttribute('rel') === 'next') {
+        nextBtn = link;
+        console.log('✅ Found next button with text:', link.textContent.trim());
+        break;
+      }
     }
     
     // If no button found, use URL navigation
@@ -155,7 +164,7 @@
     }
     
     // Click the button
-    console.log('👆 Clicking next button...');
+    console.log('👆 Clicking next button:', nextBtn.textContent.trim());
     nextBtn.click();
     return true;
   }
