@@ -1,0 +1,28 @@
+{
+  "manifest_version": 3,
+  "name": "11880 Auto Scraper - TEST (50 pages)",
+  "version": "1.0",
+  "description": "Test auto-scraper for 11880.com - 50 pages only",
+  "permissions": [
+    "storage",
+    "activeTab"
+  ],
+  "host_permissions": [
+    "https://www.11880.com/*"
+  ],
+  "content_scripts": [
+    {
+      "matches": ["https://www.11880.com/suche/*"],
+      "js": ["scraper.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_icon": {
+      "16": "icon16.png",
+      "48": "icon48.png",
+      "128": "icon128.png"
+    }
+  }
+}

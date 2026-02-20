@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    body {
+      width: 350px;
+      padding: 15px;
+      font-family: Arial, sans-serif;
+    }
+    h1 {
+      font-size: 18px;
+      color: #333;
+      margin-bottom: 10px;
+    }
+    .status {
+      background: #f0f0f0;
+      padding: 10px;
+      border-radius: 5px;
+      margin: 10px 0;
+    }
+    button {
+      width: 100%;
+      padding: 10px;
+      margin: 5px 0;
+      background: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    button:hover {
+      background: #45a049;
+    }
+    .warning {
+      color: #ff9800;
+      font-size: 12px;
+      margin-top: 10px;
+    }
+    .info {
+      font-size: 12px;
+      color: #666;
+      margin-top: 5px;
+    }
+  </style>
+</head>
+<body>
+  <h1>🏠 11880 Auto Scraper - TEST</h1>
+  
+  <div class="status">
+    <strong>Status:</strong> <span id="status">Ready</span><br>
+    <strong>Pages:</strong> <span id="pages">50 (test)</span><br>
+    <strong>Delay:</strong> 5-10 seconds
+  </div>
+  
+  <button onclick="startScraper()">▶️ Start Scraping</button>
+  <button onclick="downloadData()" style="background: #2196F3;">📥 Download CSV</button>
+  <button onclick="resetData()" style="background: #f44336;">🔄 Reset Data</button>
+  
+  <div class="warning">
+    ⚠️ Test version: Stops after 50 pages<br>
+    Check Console (F12) for progress
+  </div>
+  
+  <div class="info">
+    Open https://www.11880.com/suche/Immobilien/deutschland<br>
+    Then click Start
+  </div>
+  
+  <script src="popup.js"></script>
+</body>
+</html>
