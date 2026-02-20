@@ -21,13 +21,14 @@ clawdbot-kimi-agent/
 ├── sessions/              # Session logs and transcripts
 │   ├── logs/              # Daily session logs
 │   └── transcripts/       # Conversation transcripts
+├── scripts/               # Utility scripts
+│   ├── 11880_scraper.py   # ⭐ 11880.com scraper
+│   ├── backup.sh          # Backup script
+│   └── cleanup.sh         # Cleanup old logs
 ├── docs/                  # Documentation
 │   ├── OPTIMIZATION.md    # Performance optimization guide
 │   ├── QMD-SETUP.md       # QMD installation & setup ⭐ NEW
 │   └── setup-guide.md     # General setup guide
-├── scripts/               # Utility scripts
-│   ├── backup.sh          # Backup script
-│   └── cleanup.sh         # Cleanup old logs
 ├── config/                # Configuration examples
 │   ├── openclaw-qmd.json          # Config WITH QMD ⭐
 │   ├── openclaw-optimized.json    # Config without QMD
@@ -131,6 +132,9 @@ Saves important memories BEFORE context compaction. Never lose data!
 **Documentation:** See `docs/OPTIMIZATION.md`
 
 ```bash
+# Run 11880.com scraper (91,217 leads!)
+cd scripts && python 11880_scraper.py
+
 # Backup everything
 ./scripts/backup.sh
 
@@ -145,8 +149,11 @@ openclaw status
 
 ### Active
 1. **11880.com Scraper** - Email extraction from German business directory
-   - Status: Bookmarklet ready, need manual execution
-   - Data collected: 269,699 businesses (27,617 emails)
+   - Status: ✅ Python scraper ready
+   - Target: 91,217 results (1,825 pages)
+   - Script: `scripts/11880_scraper.py`
+   - Features: Async, deduplication, batch processing
+   - Data collected: 269,699 businesses (27,617 emails) from previous runs
 
 ### Backlog
 - VPS setup for automated scraping
