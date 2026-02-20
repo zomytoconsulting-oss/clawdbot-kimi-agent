@@ -1,0 +1,46 @@
+# Secrets and sensitive data
+.env
+.env.local
+.env.*.local
+
+# Credentials
+credentials/
+*.key
+*.pem
+*.p12
+
+# API Keys (never commit!)
+*apikey*
+*api-key*
+*token*
+
+# OpenClaw specific
+.openclaw/credentials/
+.openclaw/auth-profiles.json
+
+# Session logs (can be large)
+sessions/logs/
+*.jsonl
+
+# Archives
+*.tar.gz
+*.zip
+
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+
+# Node
+node_modules/
+npm-debug.log*
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Backup files
+*.backup
+*~
